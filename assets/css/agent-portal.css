@@ -922,44 +922,45 @@ body.agent-portal-body {
   gap: 20px;
 }
 
-.ninthware-brand-box {
+.baseofstars-brand-box {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
 }
 
-.ninthware-logo-mark {
-  width: 28px;
-  height: 28px;
-  background: #ea580c;
-  border-radius: 50%;
+.baseofstars-logo-mark {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #1ca8cb 0%, #113d48 100%);
+  border-radius: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   font-weight: 900;
-  font-size: 16px;
-  box-shadow: 0 2px 6px rgba(234, 88, 12, 0.35);
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(28, 168, 203, 0.35);
 }
 
-.ninthware-text {
+.baseofstars-text {
   line-height: 1.2;
 }
 
-.ninthware-name {
+.baseofstars-name {
   font-weight: 800;
-  color: #ea580c;
+  color: var(--portal-navy);
   font-size: 17px;
   letter-spacing: -0.3px;
   display: block;
 }
 
-.ninthware-tagline {
+.baseofstars-tagline {
   font-size: 10px;
   color: #64748b;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.3px;
   display: block;
+  text-transform: uppercase;
 }
 
 /* ==========================================================================

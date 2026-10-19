@@ -415,10 +415,10 @@
       badgeClass: 'tag-system',
       title: 'Fast-track E-Visa Portal API v3.2 Available',
       date: '02 Oct 2026 09:15',
-      ref: 'TECH/NINTHWARE/v3.2',
+      ref: 'TECH/BOS/v3.2',
       content: `
         <p>Notice to Agency IT Administrators,</p>
-        <p>Ninthware Portal Engine has upgraded the B2B Gateway to v3.2 with high-throughput asynchronous document processing:</p>
+        <p>Base of Stars Portal Engine has upgraded the B2B Gateway to v3.2 with high-throughput asynchronous document processing:</p>
         <ul>
           <li>Passport MRZ auto-scan accuracy enhanced to 99.8%.</li>
           <li>Instant SMS & WhatsApp delivery of approved e-visas directly to passenger contact numbers.</li>
