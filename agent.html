@@ -135,7 +135,16 @@
                         </div>
 
                         <!-- Login Form -->
-                        <form id="agentLoginForm" autocomplete="off">
+                        <form id="agentLoginForm" autocomplete="off" novalidate>
+
+                            <!-- Invalid Credentials Alert Box -->
+                            <div id="loginAlertBox" class="portal-login-alert" role="alert">
+                                <i class="fa-solid fa-triangle-exclamation portal-login-alert-icon"></i>
+                                <div class="portal-login-alert-content">
+                                    <strong>Invalid Credentials</strong>
+                                    <span>The User ID, Password, or Security Code you entered is invalid. Please verify your credentials and try again.</span>
+                                </div>
+                            </div>
 
                             <!-- Field Row 1: User ID + Captcha (from image) -->
                             <div class="row g-3">

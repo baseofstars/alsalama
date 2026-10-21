@@ -285,6 +285,62 @@ body.agent-portal-body {
 }
 
 /* ==========================================================================
+   Login Error Alert Box
+   ========================================================================== */
+.portal-login-alert {
+  display: none;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+  padding: 12px 16px;
+  border-radius: var(--portal-radius-sm);
+  margin-bottom: 20px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.08);
+  animation: shakeAlert 0.4s ease-in-out;
+}
+
+.portal-login-alert.show {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.portal-login-alert-icon {
+  font-size: 18px;
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.portal-login-alert-content strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: #7f1d1d;
+  font-size: 14px;
+}
+
+.portal-login-alert-content span {
+  color: #991b1b;
+  font-size: 13px;
+}
+
+.portal-input.portal-input-error {
+  border-color: #ef4444 !important;
+  background-color: #fff8f8 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+@keyframes shakeAlert {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+/* ==========================================================================
    Form Fields
    ========================================================================== */
 .form-field-group {

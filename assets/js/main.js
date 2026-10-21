@@ -1136,6 +1136,12 @@
 
     $(form).on("submit", function (element) {
         element.preventDefault();
+        // If login form attempt, show invalid credentials
+        if ($(this).hasClass("login-form") || $(this).closest("#login-form").length) {
+            var $msg = $(this).find(".form-messages");
+            $msg.removeClass("success").addClass("error").text("Invalid credentials. Please check your username and password.");
+            return;
+        }
         sendContact();
     });
 

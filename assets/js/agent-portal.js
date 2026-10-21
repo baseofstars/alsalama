@@ -231,60 +231,67 @@
   }
 
   /* ==========================================================================
-     7. Form Validation & Mock Login Submission
+     7. Form Validation & Login Submission - Show Invalid Credentials
      ========================================================================== */
+  const loginAlertBox = document.getElementById('loginAlertBox');
+
   if (agentLoginForm) {
     agentLoginForm.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const userVal = userIdInput ? userIdInput.value.trim() : '';
-      const passVal = passwordInput ? passwordInput.value.trim() : '';
-      const captchaVal = captchaInput ? captchaInput.value.trim().toUpperCase() : '';
-
-      if (!userVal) {
-        showToast('Please enter your Registered User ID or E-mail Address', 'error');
-        if (userIdInput) userIdInput.focus();
-        return;
-      }
-
-      if (!passVal) {
-        showToast('Please enter your Agent Portal Password', 'error');
-        if (passwordInput) passwordInput.focus();
-        return;
-      }
-
-      if (!captchaVal) {
-        showToast('Please enter the verification Captcha code', 'error');
-        if (captchaInput) captchaInput.focus();
-        return;
-      }
-
-      if (captchaVal !== currentCaptchaCode) {
-        showToast('Incorrect captcha code. A new code has been generated.', 'error');
-        generateCaptcha();
-        if (captchaInput) {
-          captchaInput.value = '';
-          captchaInput.focus();
-        }
-        return;
-      }
-
-      // Successful local validation -> Enter Loading State
+      // Enter Authenticating State
       if (btnLoginSubmit) {
         btnLoginSubmit.classList.add('loading');
+        btnLoginSubmit.disabled = true;
         btnLoginSubmit.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...`;
       }
 
+      // Hide any previous alert while checking
+      if (loginAlertBox) {
+        loginAlertBox.classList.remove('show');
+      }
+
       setTimeout(() => {
+        // Reset Login Button
         if (btnLoginSubmit) {
           btnLoginSubmit.classList.remove('loading');
+          btnLoginSubmit.disabled = false;
           btnLoginSubmit.innerHTML = `LOGIN <i class="fa-solid fa-arrow-right ms-2"></i>`;
         }
 
-        // Display Success Modal Preview
-        openModal(successModal);
-        showToast('Authentication Successful! Welcome to Alsalama Partner Portal.', 'success');
-      }, 1200);
+        // Display Inline Invalid Credentials Alert Box
+        if (loginAlertBox) {
+          loginAlertBox.classList.remove('show');
+          void loginAlertBox.offsetWidth; // Trigger reflow for shake animation
+          loginAlertBox.classList.add('show');
+        }
+
+        // Highlight inputs with error state
+        if (userIdInput) userIdInput.classList.add('portal-input-error');
+        if (passwordInput) {
+          passwordInput.classList.add('portal-input-error');
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+
+        // Refresh captcha code for security
+        generateCaptcha();
+        if (captchaInput) {
+          captchaInput.value = '';
+        }
+
+        // Display Toast Notification
+        showToast('Invalid credentials. Please verify your User ID and Password.', 'error');
+      }, 700);
+    });
+
+    // Remove error highlight on typing
+    [userIdInput, passwordInput, captchaInput].forEach(inp => {
+      if (inp) {
+        inp.addEventListener('input', function () {
+          this.classList.remove('portal-input-error');
+        });
+      }
     });
   }
 
